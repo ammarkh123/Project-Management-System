@@ -60,13 +60,17 @@ create.onclick = function createPro() {
             else {
                 dataPro.push(newPro);
             }
+            saveData();
         }
         else {
             dataPro[temp] = newPro; // temp is a global variable created to put "i" in it.
             mood = "create";
             create.innerHTML = "Create";
         }
-        localStorage.setItem("product", JSON.stringify(dataPro));
+        function saveData() {
+            localStorage.setItem("product", JSON.stringify(dataPro));
+        }
+        saveData();
         console.log(dataPro);
         clearData();
         readData();
@@ -114,7 +118,6 @@ function readData() {
     }
     let tbody = document.getElementById("tbody");
     tbody.innerHTML = table;
-
     let btnDelete = document.getElementById("deleteAll");
     if (dataPro.length > 0) {
         btnDelete.innerHTML = `
@@ -126,7 +129,6 @@ function readData() {
     }
 }
 readData();
-
 // delete item
 // let deletePro = document.getElementById("Delete");
 function deleteItem(i) {
