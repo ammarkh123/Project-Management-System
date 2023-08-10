@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "calibri", sans-serif;
+}
+
+body {
+    background-color: #333;
+}
+
+.content {
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.content .head {
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #fff;
+    padding: 20px 0;
+}
+
+input {
+    font-size: 18px;
+    border-radius: 4px;
+    padding: 15px 5px;
+    width: calc(100% - 10px);
+    margin: 0 auto 10px;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    outline: none;
+    transition: transform .5s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    transform: scale(1.1);
+}
+
+.content .price-features {
+    width: calc(100% - 20px);
+    display: flex;
+    color: #fff;
+}
+
+.price-features input {
+    margin-right: 5px;
+}
+
+.content .price-features small {
+    padding: 0 5px;
+    background-color: #930303;
+    height: 50px;
+    width: 1fr;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.price-features small:before {
+    content: "Total: ";
+    margin-right: 15px;
+}
+
+.input button,
+#deleteAll button {
+    margin-bottom: 10px;
+    transition: .5s;
+}
+
+button {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: #530174;
+    border-radius: 20px;
+    padding: 5px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #9304cb;
+    letter-spacing: .2rem;
+}
+
+.search-by button,
+.input button {
+    padding: 10px 0;
+    transition: .5s;
+}
+
+/* ----------output---------- */
+.output {
+    box-sizing: border-box;
+}
+
+.output .search-by {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto 10px;
+    width: 100%;
+}
+
+.output .search-by button {
+    flex-basis: 45%;
+}
+
+.output table {
+    width: 100%;
+    text-align: center;
+    background-color: #222;
+    color: #fff;
+    border-spacing: 0;
+}
+
+table th {
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+table td button {
+    transition: .5s;
+    width: 80px;
+    text-align: center;
+}
+
+th,
+td {
+    font-size: 18px;
+    padding: 10px;
+}
+
+/* -------responsive-Design-------- */
+@media only screen and (max-width: 991px) {
+    .content {
+        width: 90%;
+
+    }
+
+    .output .table {
+        overflow-x: scroll;
+    }
+}
