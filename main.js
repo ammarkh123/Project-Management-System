@@ -72,7 +72,7 @@ create.onclick = function createPro() {
         readData();
     }
     else if (newPro.count > 100) {
-        alert("NOTICE: The Max Value Of Count is: 100.")
+        alert("NOTICE: The Max Value Of Count is: 100.");
     }
 }
 
