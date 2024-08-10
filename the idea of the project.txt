@@ -1,0 +1,12 @@
+the idea of the project 
+=======================
+# this project depends on CRUD technique
+# (CRUD)=> Create Update Delete
+1. getting data from input fields
+2. when you click on create button
+    data will be saved in the localStorage
+    key called "product"
+3. then it will be shown in the table down 
+4. in each item in the table there are two buttons[update, delete]
+5. you can search by title or category
+6. The data does not disappear if you load or exit the page.

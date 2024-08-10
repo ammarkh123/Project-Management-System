@@ -1,12 +1,31 @@
+/* general styles */
 * {
     margin: 0;
     padding: 0;
     font-family: "calibri", sans-serif;
 }
 
-body {
+:root {
+    --main-color: #007BFF;
+}
+
+/* end general styles */
+.body-dark {
     background-color: #333;
 }
+
+.body-light {
+    background-color: #e9e9e9;
+}
+
+#changeMood {
+    background-color: #65008d;
+}
+
+#changeMood:hover {
+    background-color: #9304cb;
+}
+
 
 .content {
     width: 80%;
@@ -19,8 +38,12 @@ body {
     text-align: center;
     text-transform: uppercase;
     font-size: 20px;
-    color: #fff;
+    color: #000;
     padding: 20px 0;
+}
+
+.content .head .sub-title {
+    color: #666;
 }
 
 input {
@@ -29,31 +52,43 @@ input {
     padding: 15px 5px;
     width: calc(100% - 10px);
     margin: 0 auto 10px;
-    background-color: #111;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     border: none;
     outline: none;
-    transition: transform .5s;
+    transition: transform .3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-input[type="text"]:focus,
-input[type="number"]:focus {
-    transform: scale(1.1);
+.input input:focus {
+    border-color: var(--main-color);
+    color: #000;
+    border: 2px solid #007BFF;
+}
+
+input.in-da {
+    background-color: #000;
+    color: #fff !important;
+}
+
+input.in-da:focus {
+    border: 1px solid #9304cb;
+    color: #fff;
 }
 
 .content .price-features {
     width: calc(100% - 20px);
     display: flex;
-    color: #fff;
 }
 
 .price-features input {
     margin-right: 5px;
+    color: #000;
 }
 
 .content .price-features small {
     padding: 0 5px;
-    background-color: #930303;
+    background-color: #d60000;
     height: 50px;
     width: 1fr;
     display: flex;
@@ -64,6 +99,7 @@ input[type="number"]:focus {
 .price-features small:before {
     content: "Total: ";
     margin-right: 15px;
+    color: #fff;
 }
 
 .input button,
@@ -76,18 +112,27 @@ button {
     width: 100%;
     border: none;
     outline: none;
-    background-color: #530174;
     border-radius: 20px;
     padding: 5px;
     cursor: pointer;
     color: #fff;
     font-size: 18px;
     font-weight: bold;
+    transition: .5s;
+    background-color: var(--main-color);
 }
 
 button:hover {
-    background-color: #9304cb;
     letter-spacing: .2rem;
+    background-color: #0056b3;
+}
+
+button.btn-dark {
+    background-color: #65008d;
+}
+
+button.btn-dark:hover {
+    background-color: #9304cb;
 }
 
 .search-by button,
@@ -115,10 +160,38 @@ button:hover {
 .output table {
     width: 100%;
     text-align: center;
-    background-color: #222;
-    color: #fff;
     border-spacing: 0;
+    background-color: #fff;
+    color: #111;
 }
+
+.output table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+
+}
+
+.output table tbody tr:hover {
+    background-color: #ddd;
+}
+
+.output table thead tr {
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+.output table.tDark {
+    background-color: #444;
+    color: #fff;
+}
+
+.output table.tDark tbody tr:nth-child(even) {
+    background-color: #333;
+}
+
+.output table.tDark tbody tr:hover {
+    background-color: #222;
+}
+
 
 table th {
     text-transform: uppercase;
@@ -147,4 +220,61 @@ td {
     .output .table {
         overflow-x: scroll;
     }
+}
+
+
+/* Light And Light Mood styles*/
+button#changeMood {
+    background-color: var(--main-color);
+}
+
+button#changeMood:hover {
+    background-color: #0056b3;
+}
+
+button#changeMood.purple {
+    background-color: #65008d;
+}
+
+button#changeMood.purple:hover {
+    background-color: #9304cb;
+}
+
+.in-li {
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.in-li:focus {
+    border-color: var(--main-color);
+    color: #fff;
+}
+
+.blue {
+    background-color: var(--main-color);
+}
+
+.blue:hover {
+    background-color: #0056b3;
+}
+
+.purple {
+    background-color: #65008d;
+}
+
+.purple:hover {
+    background-color: #9304cb;
+}
+
+/* footer */
+.footer {
+    text-align: center;
+    background-color: #444;
+    color: white;
+    margin-top: 10px;
+}
+
+.footer p {
+    padding: 10px;
+    font-size: 20px;
 }

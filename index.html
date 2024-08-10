@@ -8,34 +8,37 @@
     <!-- Linking to css -->
     <link rel="stylesheet" href="style.css">
     <!-- linking to JS -->
-    <script src="main.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
     <div class="content">
+        <div class="change">
+            <button class="btn" id="changeMood">Light Mood</button>
+        </div>
         <div class="input">
             <div class="head">
-                <h2 class="title">crud</h2>
-                <p class="sub-title">product management system</p>
+                <h2 class="title">CRUDS</h2>
+                <p class="sub-title">PRODUCT MANAGEMENT</p>
             </div>
             <input type="text" id="title" placeholder="title">
             <div class="price-features">
-                <input onkeyup="getTotal()" type="number" id="price" placeholder="Price">
-                <input onkeyup="getTotal()" type="number" id="taxes" placeholder="taxes">
-                <input onkeyup="getTotal()" type="number" id="ads" placeholder="Ads">
-                <input onkeyup="getTotal()" type="number" id="discount" placeholder="discount">
+                <input class="in-li" onkeyup="getTotal()" type="number" id="price" placeholder="Price">
+                <input class="in-li" onkeyup="getTotal()" type="number" id="taxes" placeholder="taxes">
+                <input class="in-li" onkeyup="getTotal()" type="number" id="ads" placeholder="Ads">
+                <input class="in-li" onkeyup="getTotal()" type="number" id="discount" placeholder="discount">
                 <small id="total"></small>
             </div>
             <input onkeyup="getTotal()" type="text" id="category" placeholder="Category">
-            <input type="number" id="count" placeholder="Count">
+            <input class="in-li" type="number" id="count" placeholder="Count">
             <button id="create">Create</button>
         </div>
 
         <div class="output">
             <input onkeyup="searchData(this.value)" type="text" id="search" placeholder="Search">
             <div class="search-by">
-                <button onclick="getSearchMode(this.id)" id="search-title">Search By Title</button>
-                <button onclick="getSearchMode(this.id)" id="search-category">Search By Category</button>
+                <button class="btn" onclick="getSearchMode(this.id)" id="search-title">Search By Title</button>
+                <button class="btn" onclick="getSearchMode(this.id)" id="search-category">Search By Category</button>
             </div>
             <div id="deleteAll">
             </div>
@@ -85,6 +88,10 @@
                 </table>
             </div>
         </div>
+    </div>
+    <div class="footer">
+        <p>All Rights are reserved 2024 <span style="color: red">♥</span><span style="color: #007BFF">Ammar
+                Khatab</span></p>
     </div>
 </body>
 

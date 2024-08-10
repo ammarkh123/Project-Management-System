@@ -6,7 +6,7 @@ let discount = document.getElementById("discount");
 let total = document.getElementById("total");
 let category = document.getElementById("category");
 let count = document.getElementById("count");
-let create = document.getElementById("create");
+var create = document.getElementById("create");
 
 let mood = "create";
 let temp;
@@ -16,7 +16,8 @@ function getTotal() {
     if (price.value !== "") {
         let result = (+price.value + +taxes.value + +ads.value) - +discount.value;
         total.innerHTML = result;
-        total.style.backgroundColor = "#040"
+        total.style.backgroundColor = "#040";
+        total.style.color = "#fff";
     }
     else {
         total.innerHTML = "";
@@ -25,13 +26,12 @@ function getTotal() {
 }
 
 // Create product
-let dataPro = [];
+let dataPro;
 
-if (localStorage.getItem("product") !== "") {
-    dataPro = JSON.parse(localStorage.getItem('product'));
+if (localStorage.getItem("product")) {
+    dataPro = JSON.parse(localStorage.getItem('product')); //  JSON.parse => from string to object
 }
 else {
-    let dataPro = [];
     dataPro = [];
 }
 
@@ -60,23 +60,19 @@ create.onclick = function createPro() {
             else {
                 dataPro.push(newPro);
             }
-            saveData();
         }
         else {
             dataPro[temp] = newPro; // temp is a global variable created to put "i" in it.
             mood = "create";
             create.innerHTML = "Create";
         }
-        function saveData() {
-            localStorage.setItem("product", JSON.stringify(dataPro));
-        }
-        saveData();
+        localStorage.setItem("product", JSON.stringify(dataPro));
         console.log(dataPro);
         clearData();
         readData();
     }
     else if (newPro.count > 100) {
-        alert("NOTICE: The Max Value Of Count is: 100.");
+        alert("NOTICE: The Max Value Of Count is: 100", "color: red")
     }
 }
 
@@ -100,7 +96,7 @@ function readData() {
     getTotal();
     let table = '';
     for (let i = 0; i < dataPro.length; i++) {
-        console.log(dataPro[i]);
+        // console.log(dataPro[i]);
         table += `
         <tr>
             <td>${i + 1}</td>
@@ -113,11 +109,11 @@ function readData() {
             <td>${dataPro[i].total}</td>
             <td><button onclick = "updateData(${i})" id="update">Update</button></td>
             <td><button onclick = "deleteItem(${i})" id="Delete">Delete</button></td>
-            </tr>
-            `
+        </tr>`
     }
     let tbody = document.getElementById("tbody");
     tbody.innerHTML = table;
+
     let btnDelete = document.getElementById("deleteAll");
     if (dataPro.length > 0) {
         btnDelete.innerHTML = `
@@ -129,17 +125,18 @@ function readData() {
     }
 }
 readData();
+
 // delete item
 // let deletePro = document.getElementById("Delete");
 function deleteItem(i) {
-    dataPro.splice(i, 1)
-    localStorage.product = JSON.stringify(dataPro);
+    dataPro.splice(i, 1);
+    localStorage.setItem("product", JSON.stringify(dataPro));
     readData();
 }
 // delete all items
 
 function deleteAllFunc() {
-    console.log("hello");
+    // console.log("Delete all function");
     dataPro.splice(0);
     localStorage.product = [];
     readData();
@@ -228,3 +225,72 @@ function searchData(value) {
     }
     document.getElementById("tbody").innerHTML = table;
 }
+
+// Light Mood & Dark Mood
+let changeBtn = document.querySelector(".change #changeMood");
+let body = document.querySelector("body");
+let form = document.querySelector(".content");
+let inputs = document.querySelectorAll("input");
+var btns = document.querySelectorAll("button");
+let mainTitle = document.querySelector(".head .title");
+let thTable = document.querySelectorAll(".table th");
+let tdTable = document.querySelectorAll(".table td");
+let table = document.querySelector(".output table");
+
+let change = "light";
+function moodFunc() {
+    // Dark mood
+    if (change == "light") {
+        change = "dark";
+        mainTitle.style.color = "#fff";
+        body.classList.add("body-dark");
+        body.classList.remove("body-light");
+        changeBtn.innerHTML = "Dark Mood";
+        changeBtn.classList.add("purple");
+        changeBtn.classList.remove("blue");
+        (function () {
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].classList.add("in-da");
+            }
+            for (let i = 0; i < btns.length; i++) {
+                btns[i].classList.add("btn-dark");
+            }
+            for (let i = 0; i < thTable.length; i++) {
+                thTable[i].style.backgroundColor = "#65008d";
+            }
+            for (let i = 0; i < tdTable.length; i++) {
+            }
+            table.classList.add('tDark');
+        })()
+
+    }
+    // Light Mood
+    else {
+        change = "light";
+        // body backgroundColor
+        body.classList.remove("body-dark");
+        body.classList.add("body-light");
+        changeBtn.innerHTML = "Light Mood";
+        changeBtn.classList.add("blue");
+        changeBtn.classList.remove("purple");
+        (function () {
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].classList.remove("in-da");
+            }
+            for (let i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("btn-dark");
+            }
+
+            mainTitle.style.color = "#000";
+            // table style
+            for (let i = 0; i < thTable.length; i++) {
+                thTable[i].style.backgroundColor = "#007BFF";
+                thTable[i].style.color = "#fff";
+            }
+            for (let i = 0; i < tdTable.length; i++) {
+            }
+            table.classList.remove("tDark");
+        })()
+    }
+}
+changeBtn.addEventListener("click", moodFunc);
